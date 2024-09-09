@@ -1,0 +1,70 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url('html/images/Molokini_Hawaii.jpg'); /* Aggiunge un'immagine di sfondo */
+    background-size: cover; /* Adatta l'immagine di sfondo alla finestra */
+    background-position: center;
+
+}
+.card-container {
+    perspective: 1000px; /* Aggiunge profondità 3D */
+}
+.card {
+    position: relative; /* Gestisce efficacemente la posizione della Card */
+    width: 300px;
+    height: 200px;
+    transform-style: preserve-3d; /* Necessario per gli effetti 3D */
+    transition: transform 0.5s; /* Effetto di transizione -> Durata animazione */
+}
+.card-front, .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden; /* Nasconde l'altro lato quando non visibile, essenziale per il nostro progetto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #0580f3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.card-front {
+    background-color: #fff;
+    /* background-image: url('html/images/Barche_Zanzibar.jpg'); Aggiunge un'immagine di sfondo */
+    background-size: cover; /* Adatta l'immagine di sfondo alla dimensione della card */
+    background-position: center; /* Centra l'immagine di sfondo */
+}
+.card-back {
+    background-color: #fff;
+    transform: rotateY(180deg); /* Gira il retro della Card */
+}
+.card:hover {
+    transform: rotateY(180deg); /* Effetto flip al passaggio del mouse */
+    cursor: crosshair;
+}
+.card-image {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Adatta l'immagine al contenitore */
+    margin: 5px; /* Aggiungo un po' di spazio tra le immagini */
+}
+.image-container {
+    position: relative; /* Necessario per il posizionamento assoluto del testo */
+}
+.text-overlay {
+    position: absolute; /* Posiziona il testo sopra l'immagine */
+    top: 50%; /* Centra verticalmente il testo */
+    left: 50%; /* Centra orizzontalmente il testo */
+    transform: translate(-50%, -50%); /* Centra esattamente il testo */
+    color: #fff333; /* Colore del testo */
+    /* background-color: rgba(0, 0, 0, 0.5); Sfondo semi-trasparente per migliorare la leggibilità */
+    padding: 10px; /* Spaziatura interna */
+    border-radius: 5px; /* Angoli arrotondati */
+    text-align: center; /* Centra il testo */
+}
