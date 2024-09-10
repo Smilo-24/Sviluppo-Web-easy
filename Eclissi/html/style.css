@@ -1,0 +1,105 @@
+body {
+    /* Indico la larghezza e l'altezza specificando che dovrà essere alta quanto l'altezza del documento. */
+    width: 100%;
+    height: 100vh;
+    /* Centro il contenuto della pagina */
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    margin: 0;
+    background-color: whitesmoke;
+    background-image: url('images/immagine1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#galleria {
+    /* Contenitore dello slider. */
+    position: relative;
+    width: 500px;
+    /* Il ratio è il rapporto della dimensione dell'elemento che stiamo cercando di regolare
+    Il valore "auto" è il valore di default della proprietà aspect-ratio CSS.
+    Quindi: auto-calcola l'altezza in modo proporzionale sulla base della larghezza,
+    per fare ciò sarà necessario indicare 1 come valore */
+    aspect-ratio: 1;
+    display: grid;
+    /* Con la proprietà overflow: hidden
+    le immagini contenute all'interno della galleria non dovranno andare oltre la dimensione e la forma del contenitore generale */
+    overflow: hidden;
+    border: 5px solid #111;
+    border-radius: 50%;
+    border: 1px solid #f1f1f1;
+}
+
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+
+#galleria > img {
+    width: 100%;
+    aspect-ratio: 1;
+    /* Definisco la grandezza delle immagini con le proprietà
+    border-radius:50%; e object-fit: cover; */
+    object-fit: cover;
+    border-radius: 50%;
+    /* Per ottenere un perfetto allineamento all'interno del DIV #galleria che a sua volta ha assegnato la regola display: grid; */
+    grid-area: 1/1;
+    transform-origin: 35% 120%;
+    /* Costruzione dell'animazione */
+    animation: movement 12s infinite cubic-bezier(.66, -0.01, .36, 1);
+}
+
+#galleria > img:nth-child(2) {
+    /* Creo il loop delle immagine di 12 secondi con ratione infinita */
+    animation-delay: -3s;
+}
+
+#galleria > img:nth-child(3) {
+    animation-delay: -6s;
+}
+
+#galleria > img:nth-child(4) {
+    animation-delay: -9s;
+}
+
+/* Creazione del movimento */
+@keyframes movement {
+    /* 360° / 4 cosi da dividere il movimento per le 4 immagini che ho caricato */
+    0%, 3% {
+        transform: rotate(0);
+    }
+    22%, 27% {
+        transform: rotate(90deg);
+    }
+    47%, 52% {
+        transform: rotate(180deg);
+    }
+    72%, 77% {
+        transform: rotate(270deg);
+    }
+    98%, 100% {
+        transform: rotate(360deg);
+    }
+}
+
+.shadow {
+    box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.333);
+    width: 100%;
+    aspect-ratio: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* Rende l'elemento visibile sopra le immagini */
+    z-index: 3;
+    border-radius: 50%;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(100%);
+    }
+}
