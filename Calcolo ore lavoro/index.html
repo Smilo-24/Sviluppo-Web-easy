@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolatore Ore di Lavoro</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Calcolatore Ore di Lavoro</h1>
+    <form>
+        <label for="entry-time">Entrata:</label>
+        <input type="time" id="entry-time" name="entry-time"><br><br>
+        <label for="lunch-start-time">Inizio Pausa Pranzo:</label>
+        <input type="time" id="lunch-start-time" name="lunch-start-time"><br><br>
+        <label for="lunch-end-time">Fine Pausa Pranzo:</label>
+        <input type="time" id="lunch-end-time" name="lunch-end-time"><br><br>
+        <input type="button" value="Calcola Ora di Uscita" onclick="calcolaOraUscita()">
+        <p id="result"></p>
+    </form>
+    <div class="emote">👨‍💻</div> <!-- Emoji di programmatore -->
+    <script src="script.js"></script>
+</body>
+</html>
