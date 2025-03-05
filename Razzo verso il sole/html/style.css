@@ -1,0 +1,17 @@
+.fondo-pagina{
+    color: rgb(3, 255, 24);
+    display: flex;
+    justify-content: space-around;
+    height: 50px; /* aggiungi un'altezza */
+    width: 500px; /* aggiungi la larghezza */
+    background-color: #000000; /* aggiungi un colore di sfondo */
+    margin: 0 auto;/* margin left e marging right con questa opzione "auto" sono centrati*/
+    /* position, botto, l and r, mi servono per mettere il footer in fondo la pagina */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.puntatore:hover{
+    cursor: crosshair ;
+}
