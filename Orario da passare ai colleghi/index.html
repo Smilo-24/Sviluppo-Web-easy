@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolatore Ore di Lavoro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffeb3b; /* Colore vivace per lo sfondo */
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 300px; /* Riduci la larghezza della tabella */
+            margin: 0 auto; /* Centra la tabella */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="time"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="button"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+        }
+
+        input[type="button"]:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+            text-align: center;
+        }
+
+        .emote {
+            text-align: center;
+            font-size: 50px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calcolatore Ore di Lavoro</h1>
+    <form>
+        <label for="entry-time">Entrata:</label>
+        <input type="time" id="entry-time" name="entry-time"><br><br>
+        <label for="lunch-start-time">Inizio Pausa Pranzo:</label>
+        <input type="time" id="lunch-start-time" name="lunch-start-time"><br><br>
+        <label for="lunch-end-time">Fine Pausa Pranzo:</label>
+        <input type="time" id="lunch-end-time" name="lunch-end-time"><br><br>
+        <input type="button" value="Calcola Ora di Uscita" onclick="calcolaOraUscita()">
+        <p id="result"></p>
+    </form>
+    <div class="emote">👨‍💻</div> <!-- Emoji di programmatore -->
+    <script>
+        function calcolaOraUscita() {
+            // Ottieni i valori di input
+            var oraEntrata = document.getElementById("entry-time").value;
+            var oraInizioPausa = document.getElementById("lunch-start-time").value;
+            var oraFinePausa = document.getElementById("lunch-end-time").value;
+
+            // Converti i valori di input in minuti
+            var minutiEntrata = convertiTempoInMinuti(oraEntrata);
+            var minutiInizioPausa = convertiTempoInMinuti(oraInizioPausa);
+            var minutiFinePausa = convertiTempoInMinuti(oraFinePausa);
+
+            // Calcola i minuti totali di lavoro
+            var minutiLavoroMattina = minutiInizioPausa - minutiEntrata;
+            var minutiLavoroPomeriggio = (8 * 60) - minutiLavoroMattina; // 8 ore di lavoro meno il lavoro del mattino
+            var minutiUscita = minutiFinePausa + minutiLavoroPomeriggio;
+
+            // Converti i minuti totali in orario
+            var oraUscita = convertiMinutiInTempo(minutiUscita);
+
+            // Mostra il risultato
+            document.getElementById("result").innerHTML = "Oggi uscirai dal lavoro alle " + oraUscita;
+        }
+
+        function convertiTempoInMinuti(tempo) {
+            var ore = parseInt(tempo.split(":")[0]);
+            var minuti = parseInt(tempo.split(":")[1]);
+            return ore * 60 + minuti;
+        }
+
+        function convertiMinutiInTempo(minuti) {
+            var ore = Math.floor(minuti / 60);
+            var minutiRimanenti = minuti % 60;
+            return (ore < 10 ? "0" : "") + ore + ":" + (minutiRimanenti < 10 ? "0" : "") + minutiRimanenti;
+        }
+    </script>
+</body>
+</html>
