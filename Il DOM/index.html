@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il DOM</title>
+</head>
+<body>
+    <a href="pagina.html">Ciao</a>
+    
+    <input type="button" value="DOM W3C?" onclick="domw3c();">
+
+
+
+
+    <script type="text/javascript">
+        
+        function domw3c() {
+            if(document.getElementById) {
+                // il browser supporta il DOM di livello 1 del W3C
+                alert(":) DOM Supportato!");
+            }
+            else {
+                // il browser NON supporta il DOM di livello 1 del W3C
+                alert(":( DOM NON Supportato!");
+            }
+        }
+        </script>
+</body>
+</html>
